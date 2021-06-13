@@ -8,6 +8,7 @@ h2 {
   margin: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
+
 #seattle,
 #Tokyo,
 #Dubai,
@@ -41,7 +42,7 @@ p {
   width: 1000px;
   margin: auto;
   margin-top: 40px;
-  color: olive; 
+  color: olive;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 footer {

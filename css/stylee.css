@@ -8,7 +8,13 @@ h2 {
   margin: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
-
+header {
+  display: flex;
+}
+img {
+  width: 700px;
+  height: 295px;
+}
 #seattle,
 #Tokyo,
 #Dubai,
@@ -28,12 +34,21 @@ li {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 800px;
+}
 
 a {
-  font-size: 50px;
-  margin: 50px;
+  font-size: 30px;
+  margin-left: 50px;
   text-decoration: none;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+a:hover{
+  color: red;
 }
 p {
   font-size: 30px;
@@ -41,7 +56,7 @@ p {
   color: cadetblue;
   width: 1000px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 70px;
   color: olive;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
@@ -50,6 +65,6 @@ footer {
   font-size: 20px;
   background-color: cadetblue;
   color: black;
-  margin-top: 274px;
+  margin-top: 244px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }

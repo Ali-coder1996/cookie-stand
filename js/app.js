@@ -13,7 +13,7 @@ let salesData = document.getElementById('sales-data');
 // =======================================================
 
 //create constructor to make our store object
-function CookieStand(minCustPerHour, maxCustPerHour, avgCookiePerSale, location){
+function CookieStand(minCustPerHour, maxCustPerHour, avgCookiePerSale, location) {
   // create all dynamic properties
   this.minCustPerHour = minCustPerHour;
   this.maxCustPerHour = maxCustPerHour;
@@ -27,7 +27,7 @@ function CookieStand(minCustPerHour, maxCustPerHour, avgCookiePerSale, location)
 }
 
 // ======================================================
-CookieStand.prototype.render = function (){
+CookieStand.prototype.render = function () {
 
   //create tr
   let trElement = document.createElement('tr');
@@ -54,7 +54,7 @@ CookieStand.prototype.render = function (){
 };
 
 // create header row with hours
-function cookieStandHours(){
+function cookieStandHours() {
   let trElement1 = document.createElement('tr');
   salesData.appendChild(trElement1);
   let thElement1 = document.createElement('th');
@@ -77,16 +77,16 @@ function cookieStandHours(){
 
 // ======================================================
 // Create the new store instances
-let lima=new CookieStand(2, 16, 4.6, 'Lima');
-let paris=new CookieStand(20, 38, 2.3, 'Paris');
-let dubai=new CookieStand(11, 38, 3.7, 'Dubai');
-let tokay=new CookieStand(3, 24, 1.2, 'Tokay');
-let seattle=new CookieStand(23, 65, 6.3, 'seattle');
+let lima = new CookieStand(2, 16, 4.6, 'Lima');
+let paris = new CookieStand(20, 38, 2.3, 'Paris');
+let dubai = new CookieStand(11, 38, 3.7, 'Dubai');
+let tokay = new CookieStand(3, 24, 1.2, 'Tokay');
+let seattle = new CookieStand(23, 65, 6.3, 'seattle');
 
 // ======================================================
 
 //creating function to generate random num and push to empty array
-CookieStand.prototype.salesFiguresGenerator = function (){
+CookieStand.prototype.salesFiguresGenerator = function () {
 
   for (let i = 0; i < hoursOpen.length; i++) {
 
@@ -95,7 +95,7 @@ CookieStand.prototype.salesFiguresGenerator = function (){
 
     this.cookieStandSales.push(avgCookiePerHour);
 
-    this.dailySalesTotals += avgCookiePerHour ;
+    this.dailySalesTotals += avgCookiePerHour;
   }
 };
 // =====================================================
@@ -104,13 +104,13 @@ CookieStand.prototype.salesFiguresGenerator = function (){
 
 //=======================================================================
 // create function to push total hourly sales into the footer row
-function cookieStandHourlyTotals(){
+function cookieStandHourlyTotals() {
   //create row & data element, content, append
   let trElement2 = document.createElement('tr');
   salesData.appendChild(trElement2);
-  let tdElement2 = document.createElement('td');
-  tdElement2.textContent = 'Total';
-  trElement2.appendChild(tdElement2);
+  let thElement2 = document.createElement('th');
+  thElement2.textContent = 'Total';
+  trElement2.appendChild(thElement2);
 
   let grandTotal = 0;
 
@@ -123,17 +123,17 @@ function cookieStandHourlyTotals(){
       hourlyCounter += storesArray[store].cookieStandSales[i];
     }
 
-    tdElement2 = document.createElement('th');
+    let thElement3 = document.createElement('th');
     //create the content
-    tdElement2.textContent = hourlyCounter;
-    trElement2.appendChild(tdElement2);
+    thElement3.textContent = hourlyCounter;
+    trElement2.appendChild(thElement3);
     grandTotal += hourlyCounter;
 
   }
   // calculates and appends grand total to table
-  let tdElement3 = document.createElement('td');
-  tdElement3.textContent = grandTotal;
-  trElement2.appendChild(tdElement3);
+  let thElement4 = document.createElement('th');
+  thElement4.textContent = grandTotal;
+  trElement2.appendChild(thElement4);
   // console.log(grandTotal);
   //append th to table in DOM
 }
@@ -151,11 +151,11 @@ paris.salesFiguresGenerator();
 lima.salesFiguresGenerator();
 
 cookieStandHours();
-cookieStandHourlyTotals();
-lima.render();
+
 seattle.render();
 tokay.render();
 tokay.render();
 dubai.render();
 paris.render();
 lima.render();
+cookieStandHourlyTotals();

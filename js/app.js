@@ -51,11 +51,11 @@ function cookieStandHours(){
 
 // ======================================================
 // Create the new store instances
-new CookieStand(2, 16, 4.6, 'Lima');
-new CookieStand(20, 38, 2.3, 'Paris');
-new CookieStand(11, 38, 3.7, 'Dubai');
-new CookieStand(3, 24, 1.2, 'Tokay');
-new CookieStand(23, 65, 6.3, 'seattle');
+let lima=new CookieStand(2, 16, 4.6, 'Lima');
+let paris=new CookieStand(20, 38, 2.3, 'Paris');
+let dubai=new CookieStand(11, 38, 3.7, 'Dubai');
+let tokay=new CookieStand(3, 24, 1.2, 'Tokay');
+let seattle=new CookieStand(23, 65, 6.3, 'seattle');
 
 // ======================================================
 
@@ -69,17 +69,17 @@ CookieStand.prototype.salesFiguresGenerator = function (){
 
     this.cookieStandSales.push(avgCookiePerHour);
 
-    this.dailySalesTotals = avgCookiePerHour += this.dailySalesTotals;
+    this.dailySalesTotals += avgCookiePerHour ;
   }
 };
 // =====================================================
 //render method defined here
 CookieStand.prototype.render = function (){
 
-  this.salesFiguresGenerator();
-
   //create tr
   let trElement = document.createElement('tr');
+  cookieTable.appendChild(trElement);
+  //append th to table in DOM
   let tdElement = document.createElement('td');
   tdElement.textContent = this.location;
   trElement.appendChild(tdElement);
@@ -98,8 +98,6 @@ CookieStand.prototype.render = function (){
   tdElement = document.createElement('td');
   tdElement.textContent = this.dailySalesTotals;
   trElement.appendChild(tdElement);
-  //append th to table in DOM
-  cookieTable.appendChild(trElement);
 };
 
 //=======================================================================
@@ -126,8 +124,7 @@ function cookieStandHourlyTotals(){
     //create the content
     tdElement.textContent = hourlyCounter;
     trElement.appendChild(tdElement);
-    grandTotal = hourlyCounter += grandTotal;
-
+    grandTotal += hourlyCounter;
 
   }
   // calculates and appends grand total to table
@@ -139,22 +136,16 @@ function cookieStandHourlyTotals(){
   cookieTable.appendChild(trElement);
 }
 
-// =============================================================
-// function used to render all store rows with one call
-function renderAllStores(){
-  for(let i in storesArray){
-    storesArray[i].render();
-  }
-}
 
-// =============================================================
-
-
-
-//add event listener, listening for event, put at bottom for code readability
-
-
-//Now we need to call our functions -- in the proper order
 cookieStandHours();
-renderAllStores();
+seattle.salesFiguresGenerator();
+seattle.render();
+tokay.salesFiguresGenerator();
+tokay.render();
+dubai.salesFiguresGenerator();
+dubai.render();
+paris.salesFiguresGenerator();
+paris.render();
+lima.salesFiguresGenerator();
+lima.render();
 cookieStandHourlyTotals();

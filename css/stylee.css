@@ -1,5 +1,8 @@
 body {
   background-color: bisque;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 h2 {
   color: #ff6b6b;
@@ -12,8 +15,8 @@ header {
   display: flex;
 }
 img {
-  width: 700px;
-  height: 295px;
+  width: 60%;
+  height: 150px;
 }
 #seattle,
 #Tokyo,
@@ -36,9 +39,9 @@ li {
 }
 nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: 800px;
+  width: 40%;
 }
 
 a {
@@ -47,11 +50,11 @@ a {
   text-decoration: none;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
-a:hover{
+a:hover {
   color: red;
 }
 p {
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   color: cadetblue;
   width: 1000px;
@@ -65,15 +68,27 @@ footer {
   font-size: 20px;
   background-color: cadetblue;
   color: black;
-  margin-top: 244px;
+  margin-top: 124px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
   font-weight: 600;
   width: 100px;
   height: 40px;
+}
+
+.img-ed {
+  width: 200px;
+  height: 200px;
   margin-top: 20px;
 }
+.par {
+  width: 100%;
+  text-align: left;
+}
+

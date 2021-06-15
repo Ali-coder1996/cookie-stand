@@ -71,17 +71,6 @@ footer {
   margin-top: 50px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
-
-table,
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  font-weight: 600;
-  width: 100px;
-  height: 40px;
-}
-
 .img-ed {
   width: 200px;
   height: 200px;

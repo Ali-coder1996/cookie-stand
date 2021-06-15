@@ -7,7 +7,7 @@ let storesArray = [];
 let hoursOpen = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 // we need to access the table that is in the DOM
-let cookieTable = document.getElementById('main-div');
+let salesData = document.getElementById('sales-data');
 
 
 // =======================================================
@@ -27,26 +27,52 @@ function CookieStand(minCustPerHour, maxCustPerHour, avgCookiePerSale, location)
 }
 
 // ======================================================
+CookieStand.prototype.render = function (){
+
+  //create tr
+  let trElement = document.createElement('tr');
+  salesData.appendChild(trElement);
+  //append th to table in DOM
+  let thElement = document.createElement('th');
+  thElement.textContent = this.location;
+  trElement.appendChild(thElement);
+
+  for (let i = 0; i < hoursOpen.length; i++) {
+
+    //create td
+    let tdElement = document.createElement('td');
+    // create td content
+    tdElement.textContent = this.cookieStandSales[i];
+    // append td to tr
+    trElement.appendChild(tdElement);
+  }
+
+  // totals sales for each location for the day
+  thElement = document.createElement('th');
+  thElement.textContent = this.dailySalesTotals;
+  trElement.appendChild(thElement);
+};
 
 // create header row with hours
 function cookieStandHours(){
-
-  let thElement = document.createElement('th');
-  thElement.textContent = '';
-  cookieTable.appendChild(thElement);
+  let trElement1 = document.createElement('tr');
+  salesData.appendChild(trElement1);
+  let thElement1 = document.createElement('th');
+  thElement1.textContent = '';
+  trElement1.appendChild(thElement1);
 
   //use for loop to push hours array to table header
   for (let i = 0; i < hoursOpen.length; i++) {
-    thElement = document.createElement('th');
+    thElement1 = document.createElement('th');
     //create th content
-    thElement.textContent = hoursOpen[i];
+    thElement1.textContent = hoursOpen[i];
     //append th to table in DOM
-    cookieTable.appendChild(thElement);
+    trElement1.appendChild(thElement1);
   }
   //create daily totals column
-  thElement = document.createElement('th');
-  thElement.textContent = 'Daily Totals';
-  cookieTable.appendChild(thElement);
+  thElement1 = document.createElement('th');
+  thElement1.textContent = 'Daily Totals';
+  trElement1.appendChild(thElement1);
 }
 
 // ======================================================
@@ -74,40 +100,17 @@ CookieStand.prototype.salesFiguresGenerator = function (){
 };
 // =====================================================
 //render method defined here
-CookieStand.prototype.render = function (){
 
-  //create tr
-  let trElement = document.createElement('tr');
-  cookieTable.appendChild(trElement);
-  //append th to table in DOM
-  let tdElement = document.createElement('td');
-  tdElement.textContent = this.location;
-  trElement.appendChild(tdElement);
-
-  for (let i = 0; i < hoursOpen.length; i++) {
-
-    //create td
-    tdElement = document.createElement('td');
-    // create td content
-    tdElement.textContent = this.cookieStandSales[i];
-    // append td to tr
-    trElement.appendChild(tdElement);
-  }
-
-  // totals sales for each location for the day
-  tdElement = document.createElement('td');
-  tdElement.textContent = this.dailySalesTotals;
-  trElement.appendChild(tdElement);
-};
 
 //=======================================================================
 // create function to push total hourly sales into the footer row
 function cookieStandHourlyTotals(){
   //create row & data element, content, append
-  let trElement = document.createElement('tr');
-  let tdElement = document.createElement('td');
-  tdElement.textContent = 'Total';
-  trElement.appendChild(tdElement);
+  let trElement2 = document.createElement('tr');
+  salesData.appendChild(trElement2);
+  let tdElement2 = document.createElement('td');
+  tdElement2.textContent = 'Total';
+  trElement2.appendChild(tdElement2);
 
   let grandTotal = 0;
 
@@ -120,32 +123,39 @@ function cookieStandHourlyTotals(){
       hourlyCounter += storesArray[store].cookieStandSales[i];
     }
 
-    tdElement = document.createElement('td');
+    tdElement2 = document.createElement('th');
     //create the content
-    tdElement.textContent = hourlyCounter;
-    trElement.appendChild(tdElement);
+    tdElement2.textContent = hourlyCounter;
+    trElement2.appendChild(tdElement2);
     grandTotal += hourlyCounter;
 
   }
   // calculates and appends grand total to table
-  tdElement = document.createElement('td');
-  tdElement.textContent = grandTotal;
-  trElement.appendChild(tdElement);
+  let tdElement3 = document.createElement('td');
+  tdElement3.textContent = grandTotal;
+  trElement2.appendChild(tdElement3);
   // console.log(grandTotal);
   //append th to table in DOM
-  cookieTable.appendChild(trElement);
 }
 
 
-cookieStandHours();
+
 seattle.salesFiguresGenerator();
-seattle.render();
+
 tokay.salesFiguresGenerator();
-tokay.render();
+
 dubai.salesFiguresGenerator();
-dubai.render();
+
 paris.salesFiguresGenerator();
-paris.render();
+
 lima.salesFiguresGenerator();
-lima.render();
+
+cookieStandHours();
 cookieStandHourlyTotals();
+lima.render();
+seattle.render();
+tokay.render();
+tokay.render();
+dubai.render();
+paris.render();
+lima.render();

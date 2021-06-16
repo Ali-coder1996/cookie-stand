@@ -18,11 +18,23 @@
         </div>
     </header>
     <main>
-        <div id='sales-data'>
-
-        </div>
+        <table id='sales-data'>
+        </table>
+        <fieldset>
+            <legend>Add new Cookies</legend>
+            <form id="addNewCity">
+                <label for="maxCustPerHour">max-nubmer</label>
+                <input type="text" name="maxCustPerHour" id="maxCustPerHour" placeholder="number"><br>
+                <label for="minCustPerHour">min-number</label>
+                <input type="text" name="minCustPerHour" id="minCustPerHour" placeholder="number"><br>
+                <label for="avgCookiePerSale">avg-number</label>
+                <input type="text" name="avgCookiePerSale" id="avgCookiePerSale" placeholder="number"><br>
+                <label for="cityName">city name</label>
+                <input type="text" name="cityName" id="cityName" placeholder="Tafila"><br>
+                <button type="submit">add</button>
+            </form>
+        </fieldset>
     </main>
-
     <script src="js/app.js"></script>
 </body>
 

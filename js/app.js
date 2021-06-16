@@ -9,21 +9,23 @@ let hoursOpen = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm
 // we need to access the table that is in the DOM
 let salesData = document.getElementById('sales-data');
 
+let form = document.getElementById('addNewCity');
+console.log(form);
 
 // =======================================================
 
 //create constructor to make our store object
-function CookieStand(minCustPerHour, maxCustPerHour, avgCookiePerSale, location) {
+function CookieStand(minCustPerHour, maxCustPerHour, avgCookiePerSale, name) {
   // create all dynamic properties
   this.minCustPerHour = minCustPerHour;
   this.maxCustPerHour = maxCustPerHour;
   this.avgCookiePerSale = avgCookiePerSale;
-  this.location = location;
+  this.name = name;
   //empty array to push sales figures into
   this.cookieStandSales = [];
   //create day totals counter value
   this.dailySalesTotals = 0;
-  storesArray.unshift(this);
+  storesArray.push(this);
 }
 
 // ======================================================
@@ -34,7 +36,7 @@ CookieStand.prototype.render = function () {
   salesData.appendChild(trElement);
   //append th to table in DOM
   let thElement = document.createElement('th');
-  thElement.textContent = this.location;
+  thElement.textContent = this.name;
   trElement.appendChild(thElement);
 
   for (let i = 0; i < hoursOpen.length; i++) {
@@ -47,7 +49,7 @@ CookieStand.prototype.render = function () {
     trElement.appendChild(tdElement);
   }
 
-  // totals sales for each location for the day
+  // totals sales for each name for the day
   thElement = document.createElement('th');
   thElement.textContent = this.dailySalesTotals;
   trElement.appendChild(thElement);
@@ -102,6 +104,34 @@ CookieStand.prototype.salesFiguresGenerator = function () {
 //render method defined here
 
 
+function formCity(event) {
+  event.preventDefault();
+  let max = event.target.maxCustPerHour.value;
+  let min = event.target.minCustPerHour.value;
+  let avg = event.target.avgCookiePerSale.value;
+  let name = event.target.cityName.value;
+
+  for (let i = 0; i < storesArray.length; i++) {
+    if (name.toLowerCase() === storesArray[i].name.toLowerCase()) {
+      console.log(storesArray);
+      alert('This city is already exist !');
+      break;
+    } else {
+      if (i === storesArray.length - 1) {
+        let newCity = new CookieStand(min, max, avg, name);
+        newCity.salesFiguresGenerator();
+        document.getElementById('sales-data').deleteRow(storesArray.length);
+        newCity.render();
+        cookieStandHourlyTotals();
+        break;
+      }
+    }
+
+  }
+
+
+}
+form.addEventListener('submit', formCity);
 //=======================================================================
 // create function to push total hourly sales into the footer row
 function cookieStandHourlyTotals() {
@@ -153,7 +183,6 @@ lima.salesFiguresGenerator();
 cookieStandHours();
 
 seattle.render();
-tokay.render();
 tokay.render();
 dubai.render();
 paris.render();

@@ -1,18 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap");
 body {
   background-color: bisque;
   margin: 0;
   padding: 0;
   height: 100vh;
+  font-family: "Roboto Slab", serif;
 }
 h2 {
   color: #ff6b6b;
   font-size: 50px;
   font-weight: 600;
   margin: 20px;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
 header {
   display: flex;
+  background-color: rgb(255, 99, 71, 0.5);
 }
 img {
   width: 60%;
@@ -29,7 +31,6 @@ img {
   color: #ff6b6b;
   font-size: 50px;
   font-weight: 500;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 li {
@@ -48,7 +49,6 @@ a {
   font-size: 30px;
   margin-left: 50px;
   text-decoration: none;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
 a:hover {
   color: red;
@@ -60,8 +60,7 @@ p {
   width: 1000px;
   margin: auto;
   margin-top: 58px;
-  color: olive;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  color: black;
 }
 footer {
   text-align: center;
@@ -69,15 +68,31 @@ footer {
   background-color: cadetblue;
   color: black;
   margin-top: 50px;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
 .img-ed {
+  border: 1px solid transparent;
   width: 200px;
   height: 200px;
   margin-top: 20px;
+  border-radius: 100px;
 }
-.par {
-  width: 100%;
-  text-align: left;
+main p:nth-child(1) {
+  background-color: brown;
+  border-radius: 50px;
 }
-
+main p:nth-child(9) {
+  background-color: rgb(114, 84, 84);
+  border-radius: 50px;
+}
+main p:nth-child(10) {
+  background-color: rgb(128, 45, 45);
+  border-radius: 50px;
+}
+main p:nth-child(11) {
+  background-color: rgb(209, 162, 162);
+  border-radius: 50px;
+}
+main p:nth-child(12) {
+  background-color: rgb(92, 92, 92);
+  border-radius: 50px;
+}

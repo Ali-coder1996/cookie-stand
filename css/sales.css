@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 table,
 th,
@@ -9,6 +9,7 @@ td {
   height: 35px;
   width: 1200px;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 #addNewCity {
   display: flex;
@@ -64,12 +65,12 @@ main fieldset legend {
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 body {
   width: 1200px;
   margin: auto;
   height: 100vh;
-  font-family: 'Poppins', sans-serif;
 }
 header {
   background-color: #34495e;
